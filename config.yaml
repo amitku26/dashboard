@@ -6,12 +6,17 @@ credentials:
   usernames:
     amit123:
       email: amit123@gmail.com
+      logged_in: false
       name: Amit kumar
       password: $2b$12$2kvj4XueXZEavjdWp5BZKOQSS0GsvYbYmOkGcJrzmNSbRskbAvDOW
     amit@example.com:
       email: amit@example.com
+      logged_in: false
       name: Amit
       password: $2b$12$HhfZkxuCJr8DvBCM8CI1KOPvY5z3h4YyXmRGz4R41MeRw9fvW/X9W
+    sherya12:
+      name: sherya
+      password: $2b$12$dQs4G2U2awzrDfqjiV22duYcLSp0ZgWs/lZf55GS5lEf2Mx2UMwU6
 preauthorized:
   emails:
   - amit@example.com
