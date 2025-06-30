@@ -7,7 +7,7 @@ import os
 
 CONFIG_PATH = "./config.yaml"
 
-st.set_page_config(page_title="Real Estate Dashboard", layout="wide")
+st.set_page_config(page_title="🏠 Real Estate Dashboard", layout="wide")
 
 # ---------- Load or create config ----------
 def load_config():
@@ -27,14 +27,34 @@ def save_config(config):
 def user_exists(username, config):
     return username in config["credentials"]["usernames"]
 
-# ---------- Register Form ----------
+# ---------- Modern Register Form ----------
+st.markdown("""
+<style>
+    .register-box {
+        padding: 1rem;
+        background-color: #f0f2f6;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .register-title {
+        color: #0f4c81;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 with st.sidebar.expander("📝 New here? Register"):
+    st.markdown("<div class='register-box'>", unsafe_allow_html=True)
+    st.markdown("<div class='register-title'>Create a New Account</div>", unsafe_allow_html=True)
+
     with st.form("register_form"):
-        name = st.text_input("Full Name")
-        username = st.text_input("Username")
-        email = st.text_input("Email")
-        password = st.text_input("Password", type="password")
-        confirm = st.text_input("Confirm Password", type="password")
+        name = st.text_input("👤 Full Name")
+        username = st.text_input("🧑 Username")
+        email = st.text_input("📧 Email")
+        password = st.text_input("🔒 Password", type="password")
+        confirm = st.text_input("🔒 Confirm Password", type="password")
         register = st.form_submit_button("Register")
 
         if register:
@@ -53,7 +73,9 @@ with st.sidebar.expander("📝 New here? Register"):
                     'password': hashed
                 }
                 save_config(config)
-                st.success("Registered! You can now login from below.")
+                st.success("✅ Registered successfully! You can now log in.")
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # ---------- Authenticator Setup ----------
 config = load_config()
@@ -120,9 +142,6 @@ elif auth_status:
                 st.error("❌ API error. Please check your backend.")
         except Exception as e:
             st.error(f"Error contacting API: {e}")
-
-
-
 
 
 
